@@ -9,7 +9,7 @@ title: 'Ladies First!'
 tagline: 'an annotated digital edition'
 description: An annotated digital edition created with <a href="http://readux.library.emory.edu/">Readux</a>
 url:
-baseurl: ''
+baseurl: 'http://emory-libraries-ecds.github.io/digitaledition-jekylltheme/'
 
 homepage_image: http://readux.library.emory.edu/books/emory:7sr72/pages/emory:gmrpr/single-page/
 
