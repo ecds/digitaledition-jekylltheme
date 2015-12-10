@@ -1,59 +1,37 @@
-# Permalinks
-#
-# Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:           pretty
-#relative_permalinks: true
-
-# Setup
-title: 'Ladies First!'
-tagline: 'an annotated digital edition'
+---
+permalink: pretty
+title: Humanae salutis monumenta
+tagline: ', an annotated digital edition'
 description: An annotated digital edition created with <a href="http://readux.library.emory.edu/">Readux</a>
 url: http://emory-libraries-ecds.github.io/digitaledition-jekylltheme/
 baseurl: /digitaledition-jekylltheme
-# Generate static export with relative links
-# Should NOT be used with a baseurl configured
 relative_links: false
-
-homepage_image: http://readux.library.emory.edu/books/emory:7sr72/pages/emory:gmrpr/single-page/
-
-# About/contact
+homepage_image: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/pages/emory:gkkd2/single-page/
 author:
-  name:
-  url:
-  email:
-
-# Custom vars
-version:             1.0.0
-
-
-# readux export specifics
+  name: 
+  url: 
+  email: 
+version: 1.0.0
 show_annotation_author: true
-
-readux_url: 'http://readux.library.emory.edu/books/emory:7sr72/'
-readux_pdf_url: 'http://readux.library.emory.edu/books/emory:7sr72/pdf/#page=2'
-
+readux_url: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/
+readux_pdf_url: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/pdf/#page=2
 publication_info:
-  title: '"Ladies first!"  a novel'
-  author: Verdenal, Dominique François, Mrs.
-  date: '1896'
-
-# optional: set thumbnail page size to tune page browse display
-# image_size:
-#   thumbnail:
-#     width:
-#     height:
-
-
+  title: Humanae salutis monumenta
+  author: Arias Montano, Benito, 1527-1598.
+  date: 1571 [i.e. 1583
 collections:
-    annotations:
-        output: true
-    volume_pages:
-        output: true
-        permalink: /pages/:path/
-
+  annotations:
+    output: true
+  volume_pages:
+    output: true
+    permalink: /pages/:path/
 defaults:
-  - scope:
-      path: ""
-      type: volume_pages
-    values:
-      layout: volume_page
+- scope:
+    path: ''
+    type: volume_pages
+  values:
+    layout: volume_page
+image_size:
+  thumbnail:
+    width: 208
+    height: 300
