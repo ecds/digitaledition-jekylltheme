@@ -8,9 +8,9 @@ baseurl: /digitaledition-jekylltheme
 relative_links: false
 homepage_image: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/pages/emory:gkkd2/single-page/
 author:
-  name: 
-  url: 
-  email: 
+  name:
+  url:
+  email:
 version: 1.0.0
 show_annotation_author: true
 readux_url: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/
@@ -26,12 +26,20 @@ collections:
     output: true
     permalink: /pages/:path/
 defaults:
+
 - scope:
     path: ''
     type: volume_pages
   values:
     layout: volume_page
+    short_label: 'p.'
+    extra_js:
+        - deepzoom.js
+        - openseadragon.min.js
+        - volume-page.js
+
 image_size:
   thumbnail:
     width: 208
     height: 300
+
