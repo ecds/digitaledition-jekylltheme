@@ -3,6 +3,7 @@ annotation_id: 4d524fcb-60b4-4477-bc4c-ec93d7fe971e
 author: sepalme
 tei_target: '#range(#highlight-start-4d524fcb-60b4-4477-bc4c-ec93d7fe971e, #highlight-end-4d524fcb-60b4-4477-bc4c-ec93d7fe971e)'
 annotated_page: p.idm4816528
+page_index: 18
 target: highlight-start-4d524fcb-60b4-4477-bc4c-ec93d7fe971e
 tags:
 - adam-and-eve
