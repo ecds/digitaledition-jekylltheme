@@ -13,7 +13,7 @@ layout: default
 
                     <a id="covers" href="#" class="btn active" alt="Single Page" title="Single Page"><span class="glyphicon glyphicon-file"></span></a>
 
-                    <a id="list" alt="Browse pages" title="Browse pages" href="{{ baseurl }}/pages/" class="btn"><span class="glyphicon glyphicon-th"></span></a>
+                    <a id="list" alt="Browse pages" title="Browse pages" href="{{ baseurl }}/pages/" class="btn" rel="index"><span class="glyphicon glyphicon-th"></span></a>
                 </div>
 
                 <div id="deepzoom-controls" class="hidden">
@@ -35,19 +35,6 @@ layout: default
         </div>
     </div>
 
-    <aside class="margin-container">
-        <ul class="annotation-list">
-        {% for annotation in site.annotations %}
-            {% if annotation.annotated_page == page.tei_id %}
-                <li class="marginalia-item" data-annotation-id="{{ annotation.annotation_id }}">
-                {% include annotation.html %}
-                </li>
-            {% endif %}
-        {% endfor %}
-
-        </ul>
-    </aside>
-
         <div class="text-center">
             <div id="zoom-page"></div>
             <div class="page">
@@ -59,15 +46,51 @@ layout: default
                 </div>
             </div>
         </div>
-    </div>
+<!--    </div> (extra? seems to affect marginalia display) -->
+
+    <aside class="margin-container">
+        <ul class="annotation-list">
+        {% for annotation in site.annotations %}
+            {% if annotation.annotated_page == page.tei_id %}
+                <li class="marginalia-item" data-annotation-id="{{ annotation.annotation_id }}">
+                    <a name="{{ annotation.annotation_id }}" title="view highlight"
+                        href="#hl-{{ annotation.annotation_id }}" class="to-hl"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                {% include annotation.html %}
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        </ul>
+    </aside>
+
+{% comment %} Find next/previous pages for navigation.
+Use page.next and page.previous if available (jekyll 3.x),
+otherwise find pages based on index to support Jekyll 2.4 on GitHub Pages.
+{% endcomment %}
+
+    {% comment %} Generate zero-based index from 1-based page sort order {% endcomment %}
+    {% assign index = page.sort_order|minus:1 %}
 
     {% if page.previous %}
-    <a class="left carousel-control" href="{{ baseurl }}{{ page.previous.url }}" role="button" data-slide="prev" title="Prev: {{ page.previous.title }}">
+      {% assign prev_page = page.previous %}
+    {% elsif index > 0 %}
+      {% assign prev_index = index|minus:1 %}
+      {% assign prev_page = site.volume_pages[prev_index] %}
+    {% endif %}
+    {% if page.next %}
+      {% assign next_page = page.next %}
+    {% elsif index < site.volume_pages.last.sort_order|minus:1 %}
+        {% assign next_index = index|plus:1 %}
+        {% assign next_page = site.volume_pages[next_index] %}
+    {% endif %}
+
+    {% if prev_page %}
+    <a class="left carousel-control" href="{{ baseurl }}{{ prev_page.url }}" role="button" data-slide="prev" title="Prev: {{ prev_page.title }}" rel="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
     </a>
     {% endif %}
-    {% if page.next %}
-    <a class="right carousel-control" href="{{ baseurl }}{{ page.next.url }}" role="button" data-slide="next" title="Next: {{ page.next.title }}">
+    {% if next_page %}
+    <a class="right carousel-control" href="{{ baseurl }}{{ next_page.url }}" role="button" data-slide="next" title="Next: {{ next_page.title }}" rel="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
     {% endif %}
@@ -89,7 +112,6 @@ layout: default
           homeButton: 'dz-home',
           fullPageButton: 'dz-fs'
       });
-
   });
 </script>
 

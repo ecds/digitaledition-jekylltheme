@@ -1,0 +1,31 @@
+{% if page.url == '/' %} {% comment %} home page twitter/opengraph data {% endcomment %}
+  <meta property="og:title" content="{{ site.title }}"/>
+  <meta property="og:headline" content="{{ site.tagline }}" />
+  <meta property="og:image" content="{{ site.homepage_image }}"/>
+  {% comment %} site description? {% endcomment %}
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="{{ site.title }}" />
+  <meta property="twitter:image" content="{{ site.homepage_image }}"/>
+  <meta property="twitter:description" content="{{ site.tagline }}" />
+{% else %} {% comment %} secondary page twitter/opengraph data {% endcomment %}
+  {% capture page_title %}{{ site.title|xml_escape }} &middot; {{ page.title|xml_escape }}{% endcapture %}
+  <meta property="og:title" content="{{ page_title }}"/>
+  <meta property="twitter:title" content="{{ page_title }}"/>
+  <meta property="twitter:card" content="summary">
+  {% if page.excerpt %}
+    <meta property="og:description" content="{{ page.excerpt | strip_html }}" />
+    <meta property="twitter:description" content="{{ page.excerpt | strip_html }}" />
+  {% elsif page.annotation_count %}  {% comment %} description for volume pages; includes annotation count if non-zero {% endcomment %}
+  {% capture page_description %}{{ page.title|xml_escape }} of {{ site.publication_info.title|xml_escape }}{% if page.annotation_count != 0 %} with {{ page.annotation_count }} annotation{% if page.annotation_count != 1 %}s{%endif %}{% endif %}{% endcapture %}
+    <meta property="og:description" content="{{ page_description }}"/>
+    <meta property="twitter:description" content="{{ page_description }}"/>
+  {% endif %}
+
+  {% if page.images %}
+    <meta property="og:image" content="{{ page.images.thumbnail }}"/>
+    <meta property="twitter:image" content="{{ page.images.thumbnail }}"/>
+  {% endif %}
+{% endif %}
+{% if site.author.twitter %}<meta name="twitter:site" content="@{{ site.author.twitter }}">{% endif %}
+{% comment %} post/page author ? {% endcomment %}
+

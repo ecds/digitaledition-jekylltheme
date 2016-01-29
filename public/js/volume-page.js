@@ -215,6 +215,9 @@ var marginalia = {
     annotationTop: function(annotation) {
         // calculate the top position of an annotation highlight
         // used for annotation sorting and showing marginalia items
+        if (!annotation.first().position()) {
+            return 0;
+        }
         var top = annotation.first().position().top,
            wrapped_top = annotation.first().parents('.inner>div');
 
@@ -289,11 +292,52 @@ $(document).ready(function () {
           marginalia.annotationSelected(event);
         });
 
+
         // Initalize on click.marginalia event for Marginalia items
-        $('.marginalia-item').find('.text').on('click.marginalia',function(event){
+        $('.marginalia-item .text').on('click.marginalia', function(event){
           marginalia.itemSelected(event);
         });
 
+        // For smaller screens, marginalia items are below page image
+        // and anchor links are used between annotations and highlights.
+        // Propagate the link click to the appropriate marginalia function.
+        $('.annotator-hl a').on('click.marginalia', function(event){
+            $(event.target).parent().click();
+        });
+        $('.marginalia-item a.to-hl').on('click.marginalia', function(event) {
+            $(event.target).parents('.marginalia-item').find('.text').click();
+        });
     });
 
+    // map swipe directions to navigation rel link attributes
+    // currently using so-called "natural" directions to map
+    // left/right to next/prev, e.g. as if turning a page or swiping
+    // through a gallery
+    var swipe_nav_rel = {
+        'swiperight': 'prev',
+        'swipeleft': 'next',
+    };
+
+    function swipeNav(direction) {
+       if (direction in swipe_nav_rel) {
+            var link = $('a[rel="' + swipe_nav_rel[direction] + '"]');
+            if (link.length) {
+                window.location = link.first().attr('href');
+            }
+       }
+    }
+    // make sure text is still selectable with swipe area
+    delete Hammer.defaults.cssProps.userSelect;
+    // make image not draggable
+    $('.page .content img').on('dragstart', function(event) { event.preventDefault(); });
+
+    // Could bind to image only, but that seems to make swipe much
+    // harder to use on text-heavy pages...
+    var touch = new Hammer($('.page .content')[0]);
+    // navigate to next/previous page on swipe left/right
+    touch.on("swiperight swipeleft", function(ev) {
+        swipeNav(ev.type);
+    });
+    // Could use pinch gesture to trigger zoom mode, but it makes it
+    // impossible to scroll the page on smaller screens.
 });

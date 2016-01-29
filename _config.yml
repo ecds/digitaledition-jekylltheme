@@ -1,16 +1,31 @@
 ---
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
 permalink: pretty
+
+# Setup
 title: Humanae salutis monumenta
-tagline: ', an annotated digital edition'
+tagline: 'an annotated digital edition'
+description: An annotated digital edition created with <a href="http://readux.library.emory.edu/">Readux</a>
 description: An annotated digital edition created with <a href="http://readux.library.emory.edu/">Readux</a>
 url: http://emory-libraries-ecds.github.io/digitaledition-jekylltheme/
 baseurl: /digitaledition-jekylltheme
 relative_links: false
 homepage_image: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/pages/emory:gkkd2/single-page/
-author:
-  name:
-  url:
-  email:
+
+# Turn on relative links.
+# NOTE: only needed for deploying html at an unknown non top-level location.
+# It is recommended to use baseurl instead.
+relative_links: false
+
+# NOTE: jekyll-sitemap is supported by github pages;
+# may be worth looking into at some point
+#gems:
+#  - jekyll-sitemap
+
+
+# About/contact
 version: 1.0.0
 show_annotation_author: true
 readux_url: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/
@@ -19,14 +34,40 @@ publication_info:
   title: Humanae salutis monumenta
   author: Arias Montano, Benito, 1527-1598.
   date: 1571 [i.e. 1583
+
+# Custom vars
+version: 1.0.0
+
+# readux export specifics
+homepage_image: http://readux.library.emory.edu/books/emory:7sr72/pages/emory:gmrpr/single-page/
+
+show_annotation_author: true
+source_info:
+  title: '"Ladies first!" a novel'
+  author: 'Verdenal, Dominique François, Mrs.'
+  date: '1896'
+  url: http://readux.library.emory.edu/books/emory:7sr72/
+  pdf_url: http://readux.library.emory.edu/books/emory:7sr72/pdf/#page=2
+  via_readux: true
+
+publication_info:
+  title: '"Ladies first!" a novel, an annotated digital edition'
+  date: '2016'
+  author: 'Verdenal, Dominique François, Mrs.'
+  editors:
+    - "Tater, Anne O."
+  tei_xml: tei.xml
+
+
 collections:
   annotations:
     output: true
   volume_pages:
     output: true
     permalink: /pages/:path/
-defaults:
 
+
+defaults:
 - scope:
     path: ''
     type: volume_pages
@@ -37,9 +78,15 @@ defaults:
         - deepzoom.js
         - openseadragon.min.js
         - volume-page.js
+        - hammer.min.js
 
+# optional: set thumbnail page size to tune page browse display
 image_size:
   thumbnail:
+    width: 204
+    height: 300
+
     width: 208
     height: 300
+
 

@@ -4,33 +4,44 @@ title: Home
 nav_order: 1
 ---
 {% include base.html %}
-<div class="container">
-<img src="{{ site.homepage_image }}"/>
+{% comment %}NOTE: could put type on the body element via yaml config, but
+could be misleading because this is also a website ... {% endcomment %}
+<div class="container" typeof="schema:Book">
+  <meta property="schema:url" content="{{ site.url }}" />
+  <meta property="schema:name" content="{{ site.publication_info.title }}" />
+  <div property="schema:author" typeof="schema:Person">
+    <meta property="schema:name" content="{{ site.publication_info.author }}" />
+  </div>
+  {% for editor in site.publication_info.editors %}
+    <div property="schema:editor" typeof="schema:Person">
+      <meta property="schema:name" content="{{ editor }}" />
+    </div>
+  {% endfor %}
+  <img property="schema:image" src="{{ site.homepage_image }}"/>
 
-<p>{{ site.volume_pages|size }} pages, {{ site.annotations|size }} annotations.</p>
+<p><span property="schema:numberOfPages">{{ site.volume_pages|size }}</span> pages,
+<span property="schema:commentCount">{{ site.annotations|size }}</span> annotations.</p>
 
-<!-- original publication inSaformation -->
-{% if site.publication_info %}
+<!-- source publication information -->
+{% if site.source_info %}
 <p class="text-muted">
-  <em>{{ site.publication_info.title }}</em>.
-  {{ site.publication_info.author}}, {{ site.publication_info.date }}.
+  <em>{{ site.source_info.title }}</em>.
+  {{ site.source_info.author}}, {{ site.source_info.date }}.
 </p>
 {% endif %}
 
 <!-- todo: use page objects for this instead of hard-coding urls -->
 <p><a href="{{ baseurl }}/introduction/">Read the introduction</a></p>
-
 <p><a href="{{ baseurl }}/pages/">Browse the pages</a></p>
 
-
-<!-- todo: publication informatiom from header,
- link to readux edition and readux pdf using links in the tei -->
-
-{% if site.readux_url and site.readux_pdf_url %}
- <p>View the <a href="{{ site.readux_url }}">digital edition</a>
-    or download the <a href="{{ site.readux_pdf_url }}">PDF</a>
-    on <a href="http://readux.library.emory.edu/">Readux</a>.</p>
+{% comment %} link to source edition if urls are configured {% endcomment %}
+{% if site.source_info.url and site.source_info.pdf_url %}
+ <p>View the <a property="schema:isBasedOnUrl" href="{{ site.source_info.url }}">source digital edition</a>
+    or download the <a href="{{ site.source_info.pdf_url }}">source PDF</a>{% if site.source_info.via_readux %} on <a href="http://readux.library.emory.edu/">Readux</a>{% endif %}.</p>
 {% endif %}
 
+{% if site.publication_info.tei_xml %}
+<p>View annotated edition as <a href="{{ site.publication_info.tei_xml }}">TEI XML</a>.</p>
+{% endif %}
 
 </div>

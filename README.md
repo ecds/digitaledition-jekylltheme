@@ -15,6 +15,8 @@ with [Readux](http://readux.library.emory.edu) and
   - [Sidebar menu](#sidebar-menu)
   - [Custom Page URLs](#custom-page-urls)
   - [Search](#search)
+  - [Citation Information](#citation-information)
+  - [OpenGraph and Twitter metadata](#opengraph-and-twitter-metadata)
 
 ## Usage
 
@@ -78,11 +80,34 @@ customized and modify the following fields as desired:
   (default for normal pages is p.)
 - *number*: number to be displayed with the short label on thumbnail views
 - *permalink*: custom url for this page; note that these should always
-   start with `/pages/`.
+   start with `/pages/` and must have a unique value.
 
-### Custom Page URLs
+### Search
 
 Currently, search is implemented using
 [Simple-Jekyll-Search](https://github.com/christian-fei/Simple-Jekyll-Search), a javascript-based search that does not require any extra Jekyll plugins.  This provides a
 simple keyword and exact phrase search on volume pages and annotation
 content.
+
+### Citation Information
+
+By default, this site is set up to embed publication information
+on the home page to make your annotated edition easily citable by tools
+like [Zotero](https://www.zotero.org/).  To customize the citation, you
+can edit the **publication_info** section of your `_config.yml`.
+If you add a **publisher** or a **rights** statement, they will be
+included in your citation.
+
+## OpenGraph and Twitter metadata
+
+The site includes [OpenGraph](http://ogp.me/) and
+[Twitter card](https://dev.twitter.com/cards/overview) metadata for most
+pages.  The home page uses the site title and configured home page image;
+if a page has images associated (i.e., volume page images), an image
+will be included.  An excerpt will be included if available, and you can
+set a custom excerpt by adding one to the
+[Jekyll front matter](http://jekyllrb.com/docs/frontmatter/) for any
+page (other than the home page).
+
+
+
