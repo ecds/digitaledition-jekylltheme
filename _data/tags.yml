@@ -1,4 +1,6 @@
 ---
+image:
+  name: image
 adam-and-eve:
   name: adam and eve
 people:

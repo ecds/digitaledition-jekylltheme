@@ -8,11 +8,10 @@ permalink: pretty
 title: Humanae salutis monumenta
 tagline: 'an annotated digital edition'
 description: An annotated digital edition created with <a href="http://readux.library.emory.edu/">Readux</a>
-description: An annotated digital edition created with <a href="http://readux.library.emory.edu/">Readux</a>
 url: http://emory-libraries-ecds.github.io/digitaledition-jekylltheme/
 baseurl: /digitaledition-jekylltheme
 relative_links: false
-homepage_image: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/pages/emory:gkkd2/single-page/
+homepage_image: http://webpr001.library.emory.edu/readux/books/emory:b6zzh/pages/emory:gkkd2/single-page/
 
 # Turn on relative links.
 # NOTE: only needed for deploying html at an unknown non top-level location.
@@ -27,21 +26,11 @@ relative_links: false
 
 # About/contact
 version: 1.0.0
-show_annotation_author: true
-readux_url: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/
-readux_pdf_url: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/pdf/#page=2
-publication_info:
-  title: Humanae salutis monumenta
-  author: Arias Montano, Benito, 1527-1598.
-  date: 1571 [i.e. 1583
-
-# Custom vars
-version: 1.0.0
 
 # readux export specifics
 homepage_image: http://readux.library.emory.edu/books/emory:7sr72/pages/emory:gmrpr/single-page/
-
 show_annotation_author: true
+
 source_info:
   title: '"Ladies first!" a novel'
   author: 'Verdenal, Dominique François, Mrs.'
@@ -55,9 +44,10 @@ publication_info:
   date: '2016'
   author: 'Verdenal, Dominique François, Mrs.'
   editors:
-    - "Tater, Anne O."
+  - Sara Palmer
+  - RebeccaSuttonKoeser
+  - Rebecca Sutton Koeser
   tei_xml: tei.xml
-
 
 collections:
   annotations:
@@ -83,9 +73,6 @@ defaults:
 # optional: set thumbnail page size to tune page browse display
 image_size:
   thumbnail:
-    width: 204
-    height: 300
-
     width: 208
     height: 300
 
