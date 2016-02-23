@@ -13,16 +13,10 @@ baseurl: /digitaledition-jekylltheme
 relative_links: false
 
 
-# Turn on relative links.
-# NOTE: only needed for deploying html at an unknown non top-level location.
-# It is recommended to use baseurl instead.
-relative_links: false
-
 # NOTE: jekyll-sitemap is supported by github pages;
 # may be worth looking into at some point
 #gems:
 #  - jekyll-sitemap
-
 
 # About/contact
 version: 1.0.0
@@ -49,9 +43,22 @@ publication_info:
   - Rebecca Sutton Koeser
   tei_xml: tei.xml
 
+# optional: set thumbnail page size to tune page browse display
+image_size:
+  page:
+    width: 695
+    height: 1000
+  thumbnail:
+    width: 208
+    height: 300
+  small-thumbnail:
+    width: 69
+    height: 100
+
 collections:
   annotations:
     output: true
+    permalink: /annotations/:path/
   volume_pages:
     output: true
     permalink: /pages/:path/
@@ -65,15 +72,15 @@ defaults:
     layout: volume_page
     short_label: 'p.'
     extra_js:
-        - deepzoom.js
-        - openseadragon.min.js
-        - volume-page.js
-        - hammer.min.js
+    - deepzoom.js
+    - openseadragon.min.js
+    - volume-page.js
+    - hammer.min.js
+- scope:
+    path: ''
+    type: annotations
+  values:
+    layout: annotation
 
-# optional: set thumbnail page size to tune page browse display
-image_size:
-  thumbnail:
-    width: 208
-    height: 300
 
 
