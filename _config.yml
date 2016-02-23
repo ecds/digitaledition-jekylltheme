@@ -22,21 +22,21 @@ relative_links: false
 version: 1.0.0
 
 # readux export specifics
-homepage_image: http://webprd001.library.emory.edu/readux/books/emory:b6zzh/pages/emory:gkkd2/single-page/
+homepage_image: http://readuxout2in.library.emory.edu/books/emory:b6zzh/pages/emory:gkkd2/single-page/
 show_annotation_author: true
 
 source_info:
-  title: '"Ladies first!" a novel'
-  author: 'Verdenal, Dominique François, Mrs.'
-  date: '1896'
-  url: http://readux.library.emory.edu/books/emory:7sr72/
-  pdf_url: http://readux.library.emory.edu/books/emory:7sr72/pdf/#page=2
+  title: Humanae salutis monumenta
+  author: Arias Montano, Benito, 1527-1598.
+  date: 1571 [i.e. 1583]
+  url: http://readuxout2in.library.emory.edu/books/emory:b6zzh/
+  pdf_url: http://readuxout2in.library.emory.edu/books/emory:b6zzh/pdf/#page=2
   via_readux: true
 
 publication_info:
-  title: '"Ladies first!" a novel, an annotated digital edition'
+  title: Humanae salutis monumenta, an annotated digital edition
   date: '2016'
-  author: 'Verdenal, Dominique François, Mrs.'
+  author: Arias Montano, Benito, 1527-1598.
   editors:
   - Sara Palmer
   - RebeccaSuttonKoeser
@@ -70,7 +70,7 @@ defaults:
     type: volume_pages
   values:
     layout: volume_page
-    short_label: 'p.'
+    short_label: p.
     extra_js:
     - deepzoom.js
     - openseadragon.min.js
