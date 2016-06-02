@@ -8,7 +8,7 @@ permalink: pretty
 title: Humanae salutis monumenta
 tagline: 'an annotated digital edition'
 description: An annotated digital edition created with <a href="http://readux.library.emory.edu/">Readux</a>
-url: http://emory-libraries-ecds.github.io/digitaledition-jekylltheme/
+url: http://emory-libraries-ecds.github.io
 baseurl: /digitaledition-jekylltheme
 relative_links: false
 
