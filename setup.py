@@ -41,13 +41,13 @@ def create_zipfile():
 
 class PrepInstall(install):
     def run(self):
-        print '** install'
+        print('** install')
         create_zipfile()
         install.run(self)
 
 class PrepBuildExt(build_ext):
     def run(self):
-        print '** build_ext'
+        print('** build_ext')
         create_zipfile()
         build_ext.run(self)
 
