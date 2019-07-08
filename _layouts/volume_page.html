@@ -61,7 +61,7 @@ layout: default
         <ul class="annotation-list">
         {% if page.annotation_count != 0 %}
         {% for annotation in site.annotations %}
-            {% if annotation.annotated_page == page.tei_id %}
+            {% if annotation.annotated_page == page.canvas_id %}
                 <li class="marginalia-item" data-annotation-id="{{ annotation.annotation_id }}">
                     <a name="{{ annotation.annotation_id }}" title="view highlight"
                         href="#hl-{{ annotation.annotation_id }}" class="to-hl"><span class="glyphicon glyphicon-chevron-up"></span></a>
@@ -80,14 +80,26 @@ layout: default
     </aside>
 
 {% comment %} Find next/previous pages for navigation.
+Use page.next and page.previous if available (jekyll 3.x),
+otherwise find pages based on index to support Jekyll 2.4 on GitHub Pages.
 {% endcomment %}
 
     {% comment %} Generate zero-based index from 1-based page sort order {% endcomment %}
     {% assign index = page.sort_order|minus:1 %}
 
-    {% assign prev_page = page.previous %}
-    {% assign next_page = page.next %}
-    
+    {% if page.previous %}
+      {% assign prev_page = page.previous %}
+    {% elsif index > 0 %}
+      {% assign prev_index = index|minus:1 %}
+      {% assign prev_page = site.volume_pages[prev_index] %}
+    {% endif %}
+    {% if page.next %}
+      {% assign next_page = page.next %}
+    {% elsif index < site.volume_pages.last.sort_order|minus:1 %}
+        {% assign next_index = index|plus:1 %}
+        {% assign next_page = site.volume_pages[next_index] %}
+    {% endif %}
+
     {% if prev_page %}
     <a class="left carousel-control" href="{{ site.baseurl }}{{ prev_page.url }}" role="button" data-slide="prev" title="Prev: {{ prev_page.title }}" rel="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
