@@ -444,6 +444,10 @@ li.empty-item:first-child:last-child {
   outline: 0;  /* remove outline when target url is clicked */
 }
 
+.annotator-hl.marginalia-annotation-selected {
+  stroke: rgba(49,197,40,.46);
+}
+
 a.to-fullpage {
   float: right;
   padding: 5px;

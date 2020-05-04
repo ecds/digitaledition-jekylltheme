@@ -243,14 +243,19 @@ var marginalia = {
     clearHighlights: function(){
         $('.marginalia-item-selected').removeClass('marginalia-item-selected');
         $('.marginalia-annotation-selected').removeClass('marginalia-annotation-selected');
+        $('path').each(function(){this.classList.remove('marginalia-annotation-selected')});
       },
+
 
     applyHighlights: function($annotation, $item){
         marginalia.clearHighlights();
-
-        $annotation.addClass('marginalia-annotation-selected');
+        if ($annotation[0].tagName == 'path') {
+          	$annotation[0].classList.add('marginalia-annotation-selected')
+        } else {
+          	$annotation.addClass('marginalia-annotation-selected');
+        }
         $item.addClass('marginalia-item-selected');
-    },
+    }
 
 };
 
