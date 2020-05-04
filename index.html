@@ -39,8 +39,6 @@ could be misleading because this is also a website ... {% endcomment %}
     or download the <a href="{{ site.source_info.pdf_url }}">source PDF</a>{% if site.source_info.via_readux %} on <a href="http://readux.library.emory.edu/">Readux</a>{% endif %}.</p>
 {% endif %}
 
-{% if site.publication_info.tei_xml %}
-<p>View annotated edition as <a href="{{ site.publication_info.tei_xml }}">TEI XML</a>.</p>
-{% endif %}
+<p>View annotated edition as <a href="iiif_export/manifest.json">IIIF Manifest</a>.</p>
 
 </div>
